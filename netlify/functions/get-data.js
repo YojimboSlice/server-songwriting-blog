@@ -14,6 +14,7 @@ exports.handler = async (event, context) => {
       .collection('songwriting_blog_posts'); // Replace with your collection name
     const cursor = collection.find();
     const data = await cursor.toArray();
+    console.log(data, typeof data);
     await client.close();
     return {
       statusCode: 200,

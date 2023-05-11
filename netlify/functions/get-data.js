@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
     await client.connect();
     const collection = client
       .db('songwriting_blog')
-      .collection('songwriting_blog_posts'); // Replace with your collection name
+      .collection('song_writing_blog_posts'); // Replace with your collection name
     const cursor = collection.find();
     const data = await cursor.toArray();
     console.log(data, typeof data);

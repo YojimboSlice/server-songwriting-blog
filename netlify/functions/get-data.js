@@ -1,3 +1,8 @@
+const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 const handler = async (event, context) => {
   let client;
   try {
@@ -29,3 +34,5 @@ const handler = async (event, context) => {
     }
   }
 };
+
+module.exports = { handler };

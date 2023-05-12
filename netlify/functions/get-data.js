@@ -1,7 +1,10 @@
-const { MongoClient } = require('mongodb');
-require('dotenv').config();
+import { MongoClient } from 'mongodb';
+import { Handler } from '@netlify/functions';
+import dotenv from 'dotenv';
 
-exports.handler = async (event, context) => {
+dotenv.config();
+
+const handler: Handler = async (event, context) => {
   try {
     const uri = process.env.MONGO_URI; // Replace with your MongoDB URI
     const client = new MongoClient(uri, {
@@ -21,10 +24,12 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(data),
     };
   } catch (error) {
-    console.log(error);
+    console.error(error); // Log the error to the console
     return {
       statusCode: 500,
       body: JSON.stringify({ message: 'Internal server error' }),
     };
   }
 };
+
+export { handler };

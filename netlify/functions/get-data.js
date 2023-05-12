@@ -1,10 +1,9 @@
-import { MongoClient } from 'mongodb';
-import { Handler } from '@netlify/functions';
-import dotenv from 'dotenv';
+const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-const handler: Handler = async (event, context) => {
+const handler = async (event, context) => {
   try {
     const uri = process.env.MONGO_URI; // Replace with your MongoDB URI
     const client = new MongoClient(uri, {
@@ -32,4 +31,4 @@ const handler: Handler = async (event, context) => {
   }
 };
 
-export { handler };
+module.exports = { handler };
